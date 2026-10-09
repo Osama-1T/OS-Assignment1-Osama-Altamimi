@@ -31,6 +31,7 @@ class Process implements Runnable {
     private int remainingTime; // Time left for the process to finish its execution
     private int priority ; 
 
+
     // Constructor to initialize the process with name, burst time, and time quantum
     public Process(String name, int burstTime, int timeQuantum) {
         this.name = name;
@@ -154,6 +155,8 @@ public class SchedulerSimulation {
         // This makes your output unique to you - DO NOT forget to change this!
         int studentID = 446050713;  // ← CHANGE THIS TO YOUR ACTUAL STUDENT ID
         
+        int contextSwitchCount = 0; 
+
         Random random = new Random(studentID);
         
         // Define the time quantum in milliseconds (the maximum time a process gets in one round)
@@ -242,6 +245,8 @@ public class SchedulerSimulation {
             System.out.println(Colors.BOLD + Colors.MAGENTA + "└" + "─".repeat(79) + Colors.RESET + "\n");
             
             // Start the thread, which will run the process for one time quantum
+
+            contextSwitchCount++;
             currentThread.start();
             
             try {
@@ -281,6 +286,7 @@ public class SchedulerSimulation {
         System.out.println(Colors.BOLD + Colors.BRIGHT_GREEN + 
                           "╚════════════════════════════════════════════════════════════════════════════════╝" + 
                           Colors.RESET + "\n");
+                          System.out.println("Total Context Switches: " + contextSwitchCount);
     }
     
     // Method to add a process to the queue and map, while printing a "ready" message
