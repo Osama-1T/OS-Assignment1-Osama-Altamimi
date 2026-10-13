@@ -29,11 +29,11 @@
 
 | Field | Your Answer |
 |-------|-------------|
-| **Full Name** | [Write your full name here] |
-| **Student ID** | [Write your student ID here] |
-| **University Email** | [yourid]@std.psau.edu.sa |
-| **GitHub Username** | [your-github-username] |
-| **Repository Link** | [Paste your repository link here] |
+| **Full Name** | Osama Mohammed Altamimi |
+| **Student ID** | 446050713 |
+| **University Email** | 446050713@std.psau.edu.sa |
+| **GitHub Username** | Osama-1T |
+| **Repository Link** | https://github.com/Osama-1T/OS-Assignment1-Osama-Altamimi |
  
 ---
 

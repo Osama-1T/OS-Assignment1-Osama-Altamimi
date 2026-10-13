@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Random;
@@ -169,12 +171,13 @@ class Process implements Runnable {
 }
 
 public class SchedulerSimulation {
+     static int contextSwitchCount = 0;
     public static void main(String[] args) {
         // ⚠️ IMPORTANT: Put your student ID here to seed the random number generator
         // This makes your output unique to you - DO NOT forget to change this!
         int studentID = 446050713;  // ← CHANGE THIS TO YOUR ACTUAL STUDENT ID
         
-        int contextSwitchCount = 0; 
+        
 
         Random random = new Random(studentID);
         
@@ -187,7 +190,8 @@ public class SchedulerSimulation {
         
         // Queue to manage processes in a First-In-First-Out (FIFO) order
         Queue<Thread> processQueue = new LinkedList<>();
-        
+        List<Process> allProcesses = new ArrayList<>();
+
         // Map to associate each thread with its respective process object
         Map<Thread, Process> processMap = new HashMap<>();
         
@@ -225,7 +229,8 @@ public class SchedulerSimulation {
             
             // Create a new process object with a unique name, burst time, and the defined time quantum
             Process process = new Process("P" + i, burstTime, timeQuantum);
-            
+            allProcesses.add(process);
+
             // Add the process to the ready queue and the map
             addProcessToQueue(process, processQueue, processMap);
         }
@@ -289,7 +294,6 @@ public class SchedulerSimulation {
                 // If the process still has remaining time, check if there are more processes in queue
                 if (!processQueue.isEmpty()) {
                     // Re-enqueue the process to give it another chance to run in the next round
-                    process1.setLastTimeInQueue(System.currentTimeMillis());
                     addProcessToQueue(process1, processQueue, processMap);
                 } else {
                     // If this is the last process in the queue, run it to completion
@@ -326,6 +330,23 @@ public class SchedulerSimulation {
                           Colors.RESET);
         System.out.println(Colors.YELLOW + String.format("  %-15s | %-15s | %-15s | %-15s", "Process Name", "Burst Time", "Waiting Time", "Turnaround Time") + Colors.RESET);
         System.out.println("  ------------------------------------------------------------------");
+       
+        for (Process process : allProcesses) {
+    String processName = process.getName();
+    int burstTime = process.getBurstTime();
+    long waitingTime = process.getWaitingTime();
+    long turnaroundTime = waitingTime + burstTime;
+
+    System.out.printf(
+        "  %-15s | %-15d | %-15d | %-15d%n",
+        processName,
+        burstTime,
+        waitingTime,
+        turnaroundTime
+    );
+}
+
+System.out.println("  ------------------------------------------------------------------");
 
     }
     
@@ -335,6 +356,7 @@ public class SchedulerSimulation {
         // Create a new thread to run the process
         Thread thread = new Thread(process);
         
+        process.setLastTimeInQueue(System.currentTimeMillis());
         // Add the thread to the ready queue
         processQueue.add(thread);
         
