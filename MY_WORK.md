@@ -129,82 +129,108 @@
 
 ## Your Development Log
 
-### Entry 1 - [Date and Time]
+### Entry 1 - [07/10/2026 - 5:10 pm]
 **What I did**:
-
+Set up Git and prepared my project in VS Code.
 **Details**:
-
+Installed Git on my Windows computer.
+Forked the starter repository and renamed it.
+Cloned my repository to my computer.
+Opened the Java project in VS Code.
 **Challenges**:
-
+ At first, the code . command was not recognized in PowerShell.
 **Solution**:
-
-**Time spent**:
+I opened VS Code manually and used File to Open Folder to access my project.
+**Time spent**: one and half hour 
 
 ---
 
-### Entry 2 - [Date and Time]
+### Entry 2 - [09/10/2026 - 6:38 Am]
 **What I did**:
-
+ Updated my student ID and prepared my first Git commit.
 **Details**:
-
+Opened the Java project in VS Code.
+Replaced the default student ID with my university ID.
+Used Source Control to save my changes.
+Learned how to commit and push changes to GitHub
 **Challenges**:
-
+I was not familiar with the Git commit process in VS Code.
 **Solution**:
-
-**Time spent**:
+I learned how to use Source Control, write a commit message, and push my changes to GitHub.
+**Time spent**: one hour .
 
 ---
 
-### Entry 3 - [Date and Time]
+### Entry 3 - [09/10/2026 - 7:52 Am]
 **What I did**:
-
+ Added a priority value to each process.
 **Details**:
+Added a priority field to the Process class.
+Generated priority values between 1 and 10.
+Displayed each process’s priority in the Ready Queue.
+Kept the Round Robin scheduling order unchanged.
 
 **Challenges**:
-
+ I needed to display process priorities without changing the FIFO scheduling behavior.
 **Solution**:
+ I used priority only as additional process information and kept the Ready Queue in its original order.
 
 **Time spent**:
-
+one hour .
 ---
 
-### Entry 4 - [Date and Time]
-**What I did**:
+### Entry 4 - [13/10/2026 - 10:53 pm] \\ i fixed feature 2 and sent it with feature 3 commit . (i'm not sent a private file for fixed feature 2 )
 
+**What I did**:
+ Added a context switch counter to the scheduler.
 **Details**:
+Added a counter to track process execution.
+Increased the counter when a process started running.
+Displayed the total number of context switches at the end.
+Later corrected the counter declaration to make it static.
 
 **Challenges**:
+My first counter declaration was inside the main method instead of being a static class variable.
 
 **Solution**:
-
+ I moved the counter declaration outside main and used static int contextSwitchCount = 0;.
 **Time spent**:
-
+two hour
 ---
 
-### Entry 5 - [Date and Time]
+### Entry 5 - [13/10/2026 - 10:53 pm] 
 **What I did**:
-
+Implemented waiting time and turnaround time calculations.
 **Details**:
-
+Used System.currentTimeMillis() to measure waiting time.
+Recorded when processes entered and left the Ready Queue.
+Calculated turnaround time by adding waiting time and burst time.
+Created a final performance table.
 **Challenges**:
-
+ At first, the final table displayed only the column headings without any process results.
 **Solution**:
-
+I added a list to keep all processes and used a for loop to print their final results.
 **Time spent**:
-
+two hour and half . 
 ---
 
-### Entry 6 - [Optional - Date and Time]
+### Entry 6 - [Optional 13/10/2026 - 11:30 pm]
 **What I did**:
-
+Fixed project issues, tested the simulation, and prepared the final code updates.
 **Details**:
+Found that I had opened an extra Java file from the Downloads folder.
+Returned to the correct SchedulerSimulation.java file in my GitHub project.
+Stopped a previous running instance before running the program again.
+Successfully tested the simulation with 13 processes.
+Checked the final table and the context switch counter.
+Prepared a new commit to fix the earlier Feature 3 implementation.
 
 **Challenges**:
-
+I received a Java filename error and a message saying another instance was already running.
 **Solution**:
-
+ I opened the correct project file, stopped the previous run, and tested the program again. The simulation completed and displayed the performance results.
 **Time spent**:
-
+one hour and half .
 ---
 
 ## Development Log Summary
