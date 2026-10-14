@@ -184,7 +184,7 @@ one hour .
 **What I did**:
  Added a context switch counter to the scheduler.
 **Details**:
-Added a counter to track process execution.
+Added a counter to tr   ack process execution.
 Increased the counter when a process started running.
 Displayed the total number of context switches at the end.
 Later corrected the counter declaration to make it static.
@@ -263,7 +263,13 @@ one hour and half .
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+[I learned that multithreading allows one program to work on multiple tasks using different threads. 
+I understood that the CPU can switch between tasks very quickly, so the user may not notice the switching.
+In this assignment, I saw how Round Robin scheduling gives each process a small amount of time to execute.
+I also learned that start() begins a thread and join() makes the current thread wait until another thread finishes.
+The sleep() method pauses the current thread for a certain amount of time. 
+Before this assignment, I did not fully understand how threads work, 
+but the simulation helped me understand them better.]
 
 ## Question 2: What was the most challenging part of this assignment?
 
@@ -271,7 +277,9 @@ one hour and half .
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+[The most challenging part of this assignment was Feature 3, especially calculating the waiting time.
+ At first, I found it difficult because a process can return to the ready queue more than once in Round Robin scheduling. I needed to understand how to calculate the total waiting time instead of counting only one waiting period. Another problem was that my program ran, but the final performance table showed only the column headings. 
+ I was confused because I expected to see the results for every process. These two problems made Feature 3 the most difficult part of the assignment for me.]
 
 ## Question 3: How did you overcome the challenges you faced?
 
@@ -279,7 +287,7 @@ one hour and half .
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+I overcame the challenges by checking the code step by step. First, I learned that a process can wait several times in the ready queue, so I needed to add its waiting periods together. Then, I reviewed how the processes were added to the queue. To fix the empty results table, I added an allProcesses list to keep references to all the processes. I used a for loop to display the waiting time and turnaround time for each process. Finally, I ran the program again and checked that the results appeared in the table.]
 
 ## Question 4: How can you apply multithreading concepts in real-world applications?
 
@@ -287,7 +295,7 @@ one hour and half .
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+[Multithreading can be useful in real-world applications, especially video games. In a game, different tasks need to be handled, such as loading data and receiving player input. A background thread can load data while the main thread keeps the game responsive. This helps the player continue interacting with the game instead of waiting for every task to finish. From my Round Robin assignment, I learned that scheduling is important when several tasks need CPU time.]
 
 ### Optional: What would you like to learn more about?
 
@@ -319,7 +327,7 @@ one hour and half .
 
 **Your Answer:** *(3-5 sentences)*
 
-[Write your answer here.]
+[A process has its own memory space, while threads in the same process share memory. Creating a process is usually more expensive than creating a thread. Each thread has its own execution path and stack, while a process runs independently with its own resources. In SchedulerSimulation.java, we used threads to simulate process scheduling inside one Java program because they are easier to manage and usually require fewer resources than separate processes. For example, the code uses new Thread(process) to create a thread for a simulated process.]
 
 ## Question 2: Ready Queue Behavior
 
@@ -331,15 +339,20 @@ one hour and half .
 
 **Your Answer:** *(3-5 sentences)*
 
-[Write your answer here.]
+[My ready queue uses FIFO, which means First In, First Out. The process that enters the queue first gets CPU time first. In SchedulerSimulation.java, the scheduler uses processQueue.poll() to take the first thread from the queue. If a process still has remaining burst time after its time quantum, it returns to the end of the queue when other processes are waiting. The priority values are displayed, but they do not change the scheduling order.]
 
 Example from my output:
 ```
-[Paste a relevant snippet from your program output here showing a process being re-queued]
+[P7 executing quantum [2000ms]
+Remaining time: 2221ms
+P7 yields CPU for context switch
+P7 added to ready queue]
 ```
 
 **Explanation of example:**
-[Explain what is happening in the output snippet you pasted.]
+[Explanation of example:
+
+In my output, P7 executes for a time quantum of 2000ms. After that, it still has 2221ms of remaining burst time, so it has not finished. P7 yields the CPU and is added back to the ready queue. This allows the next process to get CPU time, following the Round Robin scheduling method.]
 
 ## Question 3: Thread Lifecycle
 
@@ -349,15 +362,15 @@ Example from my output:
 
 **Your Answer:** *(3-5 sentences overall; one short explanation per state)*
 
-1. **New**: [When is P1 in the New state?]
+1. **New**: [ P1 enters the New state when new Thread(process) creates its thread inside addProcessToQueue(), before start() is called.]
 
-2. **Runnable**: [When does P1 become Runnable?]
+2. **Runnable**: [P1 becomes Runnable when the scheduler calls currentThread.start().]
 
-3. **Running**: [When is P1 Running?]
+3. **Running**: [P1 starts running when the CPU executes its run() method.]
 
-4. **Waiting**: [When and why would a thread be Waiting?]
+4. **Waiting**: [The main thread enters the Waiting state when it calls currentThread.join(), while P1 enters TIMED_WAITING when it calls Thread.sleep().]
 
-5. **Terminated**: [When is P1 Terminated?]
+5. **Terminated**: [P1 enters the Terminated state when its run() method finishes executing.]
 
 ## Question 4: Real-World Applications
 
@@ -367,32 +380,32 @@ Example from my output:
 
 **Your Answer:** *(3-5 sentences per example)*
 
-### Example 1 (operating-system level): [Name of scenario]
+### Example 1 (operating-system level): [Operating System Multitasking]
 
 **Description**:
-[Describe the real-world scenario.]
+[An operating system can use Round Robin scheduling to share CPU time between tasks such as a browser, Word, and a music player. Each task acts like a process in my simulation and receives a short time quantum before the CPU switches to another task.]
 
 **Why Round-Robin works well here**:
-[Fairness, responsiveness, predictability?]
+[This provides fairness because no single task can use the CPU continuously while others are ready. It also improves responsiveness because each task gets regular opportunities to execute.]
 
-### Example 2: [Name of application/scenario]
+### Example 2: [Multiplayer Game Server]
 
 **Description**:
-[Describe the real-world scenario or application.]
+[A multiplayer game server could use a Round Robin approach to schedule processing tasks for different players. Each task acts like a process in my simulation and receives a limited time quantum before the server switches to another task.]
 
 **Why Round-Robin works well here**:
-[Fairness, responsiveness, predictability?]
+[This helps prevent one player’s long task from delaying all other players’ tasks. It also improves fairness and responsiveness by giving each task a regular chance to execute.]
 
 ## Summary
 
 **Key concepts I understood through these questions:**
-1.
-2.
-3.
+1.Round Robin scheduling uses FIFO and gives each process a time quantum before moving to the next process.
+2.I learned the difference between threads and processes, and how threads share memory inside the same process.
+3.I understood the thread lifecycle and how start(), sleep(), and join() work in my simulation.
 
 **Concepts I need to study more:**
-1.
-2.
+1.How context switching works inside a real operating system.
+2.How thread synchronization prevents problems when multiple threads access shared data.
 
 ---
 
@@ -401,29 +414,29 @@ Example from my output:
 > ⚠️ **WARNING:** Go through every line. Late submission costs **-1 mark per day**, and the deadline is **October 10, 2026**.
 
 **Repository**
-- [ ] Repository is **PUBLIC** (Settings → Danger Zone → Visibility)
-- [ ] Repository is renamed to `OS-Assignment1-YourFirstName-YourLastName`
-- [ ] GitHub account uses the university email (`@std.psau.edu.sa`)
+- [✅] Repository is **PUBLIC** (Settings → Danger Zone → Visibility)
+- [✅] Repository is renamed to `OS-Assignment1-YourFirstName-YourLastName`
+- [✅] GitHub account uses the university email (`@std.psau.edu.sa`)
 
 **Code**
-- [ ] Student ID is set in `SchedulerSimulation.java` (line 150)
-- [ ] Code compiles and runs with no errors
-- [ ] Feature 1 (priority), Feature 2 (context switches) and Feature 3 (waiting time table) all work
-- [ ] Each feature has clear comments
+- [✅] Student ID is set in `SchedulerSimulation.java` (line 150)
+- [✅] Code compiles and runs with no errors
+- [✅] Feature 1 (priority), Feature 2 (context switches) and Feature 3 (waiting time table) all work
+- [✅] Each feature has clear comments
 
 **Commits**
-- [ ] **At least 3 meaningful commits, ideally 6 or more**
-- [ ] **One commit per feature**
-- [ ] Commits are spread over **different dates** (not all in the last hour)
-- [ ] Everything is **pushed** to GitHub
+- [✅] **At least 3 meaningful commits, ideally 6 or more**
+- [✅] **One commit per feature**
+- [✅] Commits are spread over **different dates** (not all in the last hour)
+- [✅] Everything is **pushed** to GitHub
 
 **This file (`MY_WORK.md`)**
-- [ ] Full name and student ID filled in at the top
-- [ ] Development log has **5+ entries** on different dates
-- [ ] Reflection: 4 questions, 5-7 sentences each
-- [ ] Technical answers: 4 questions, 3-5 sentences each, with examples from **your** output
-- [ ] No `[...]` placeholders left
-- [ ] No section headers deleted
+- [✅] Full name and student ID filled in at the top
+- [✅] Development log has **5+ entries** on different dates
+- [✅] Reflection: 4 questions, 5-7 sentences each
+- [✅] Technical answers: 4 questions, 3-5 sentences each, with examples from **your** output
+- [✅] No `[...]` placeholders left
+- [✅] No section headers deleted
 
 **Video**
 - [ ] 2-3 minutes long, named `StudentID_Assignment1_Demo.mp4`
