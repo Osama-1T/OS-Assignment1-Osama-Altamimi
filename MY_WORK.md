@@ -39,7 +39,7 @@
 
 ## 🎥 Video Link
 
-**Video Link**: [Paste your video link here]
+**Video Link**: [(https://drive.google.com/file/d/1HzOC8owNjmYOP06BIJx3m8rQF7AQ6y8p/view?usp=sharing)]
 
 > ⚠️ **WARNING:** The video must be **publicly accessible** ("Anyone with the link can view") on **Google Drive**, **YouTube (Unlisted or Public)** or any other cloud file-sharing system. A private, restricted or broken link counts as a **missing video (-1 mark)**.
 >
@@ -439,9 +439,9 @@ In my output, P7 executes for a time quantum of 2000ms. After that, it still has
 - [✅] No section headers deleted
 
 **Video**
-- [ ] 2-3 minutes long, named `StudentID_Assignment1_Demo.mp4`
-- [ ] Shows your name, ID, repository, 3 features, IDE execution, one threading concept, and commit history
-- [ ] Link is **public** (tested in an incognito window) and pasted in the **Video Link** section above
+- [✅] 2-3 minutes long, named `StudentID_Assignment1_Demo.mp4`
+- [✅] Shows your name, ID, repository, 3 features, IDE execution, one threading concept, and commit history
+- [✅] Link is **public** (tested in an incognito window) and pasted in the **Video Link** section above
 
 **Blackboard**
 - [ ] Submit **only** the link to your public GitHub repository
